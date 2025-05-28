@@ -1,0 +1,15 @@
+[Unit]
+Description=Auto Shutdown Manager Timer
+Documentation=man:systemd.timer(5)
+Requires=auto-shutdown-manager.service
+
+[Timer]
+# Run every 5 minutes
+OnCalendar=*:*/5
+# Run immediately if system was down during scheduled time
+Persistent=true
+# Prevent multiple instances
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target
